@@ -114,6 +114,87 @@ audio {
   padding-left: 10px;
 }
 
+
+
+
+/* Styles for "Your Reservation" Section */
+/* Styles for "Your Reservation" Section */
+#your-reservation {
+  display: none; /* Hidden by default */
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#your-reservation h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+#your-reservation #reservation-details {
+  font-size: 1em;
+  color: #555;
+}
+
+#your-reservation #reservation-details p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+#your-reservation #reservation-details strong {
+  color: #222;
+}
+
+#your-reservation .btn {
+  display: inline-block;
+  padding: 8px 15px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Primary Button */
+#your-reservation .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+#your-reservation .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Danger Button */
+#your-reservation .btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+#your-reservation .btn-danger:hover {
+  background-color: #c82333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* ............//// Showcase styling ////......... */
 
 .showcase-area {

@@ -37,7 +37,7 @@
                 <p class="small">About Us</p>
                 <h2>The Best Italian Dishes Served to You by Ricard Milo Himself.</h2>
                 <p>
-                    Our glorious founder, Ricard Milo opened the first Ricard's Bizzare Cuisines in Rio de Janeiro, State of Rio de Janeiro, Brazil. This fine establishment has been serving happy customers for over 15 years, loved by many and of all audiences. Our menus offers the greatest and deepest of Italian culture, serving nothing but authenticity and bizzare bliss. 
+                    Our glorious founder, Ricard Milo opened the first Ricard's Bizzare Cuisines in Rio de Janeiro, State of Rio de Janeiro, Brazil. This fine establishment has been serving happy customers for over 15 years, loved by many and of all audiences. Our menus offers the greatest and deepest of Italian culture, serving nothing but authenticity and bizzare bliss.
                 </p>
             </div>
             <div class="about-img">
@@ -247,16 +247,31 @@
             <div class="contact-img">
                 <img src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/large_jpg/feature_-_Main_hall_1.jpg?1582043123" alt="" />
             </div>
-
+    
             <div class="form-container">
                 <h2>Make a reservation!</h2>
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="Your Email" />
-                <textarea cols="30" rows="6" placeholder="Description"></textarea>
-                <a href="#" class="btn btn-primary">Submit</a>
+                <input type="text" id="name" placeholder="Your Name" />
+                <input type="email" id="email" placeholder="Your Email" />
+                <textarea id="description" cols="30" rows="6" placeholder="Description, Including number of people"></textarea>
+                <a href="#" class="btn btn-primary" id="submit-button">Submit</a>
             </div>
         </div>
     </section>
+
+    <section id="your-reservation">
+        <div class="reservation-container container">
+            <h2>Your Reservation</h2>
+            <div id="reservation-details">
+                <p><strong>Name:</strong> <span id="reserved-name">-</span></p>
+                <p><strong>Email:</strong> <span id="reserved-email">-</span></p>
+                <p><strong>Description:</strong> <span id="reserved-description">-</span></p>
+                <button id="edit-description" class="btn btn-secondary">Edit Description</button>
+                <button id="delete-reservation" class="btn btn-danger">Delete Reservation</button>
+            </div>
+        </div>
+    </section>
+
+    
     
     
 
@@ -265,3 +280,58 @@
 </body>
 
 </html>
+<script>
+    document.getElementById("submit-button").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const description = document.getElementById("description").value.trim();
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            alert("Reservation failed, enter a valid email.");
+        } else {
+            // Update the "Your Reservation" section
+            document.getElementById("reserved-name").textContent = name;
+            document.getElementById("reserved-email").textContent = email;
+            document.getElementById("reserved-description").textContent = description;
+
+            // Show the reservation section
+            document.getElementById("your-reservation").style.display = "block";
+
+            // Clear form fields
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("description").value = "";
+
+            alert("Reservation success!");
+        }
+    });
+
+    // Edit the description
+    document.getElementById("edit-description").addEventListener("click", function () {
+        const currentDescription = document.getElementById("reserved-description").textContent;
+        const newDescription = prompt("Edit your description:", currentDescription);
+
+        if (newDescription !== null) {
+            document.getElementById("reserved-description").textContent = newDescription;
+        }
+    });
+
+    // Delete the reservation
+    document.getElementById("delete-reservation").addEventListener("click", function () {
+        if (confirm("Are you sure you want to delete your reservation?")) {
+            document.getElementById("reserved-name").textContent = "-";
+            document.getElementById("reserved-email").textContent = "-";
+            document.getElementById("reserved-description").textContent = "-";
+
+            // Hide the reservation section
+            document.getElementById("your-reservation").style.display = "none";
+
+            alert("Reservation deleted.");
+        }
+    });
+</script>
